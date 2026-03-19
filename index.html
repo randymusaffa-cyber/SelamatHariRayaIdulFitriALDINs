@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕌 Selamat Idul Fitri 1447 H 🕌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f0d060;
+            --gold-dim: rgba(212,175,55,0.4);
+            --navy: #0d1f35;
+            --navy-mid: #1a3a5c;
+            --text-soft: rgba(255,255,255,0.85);
+        }
+ 
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: radial-gradient(ellipse at 50% 0%, #0f2b4a 0%, #0a1628 60%, #060e1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+ 
+        .stars-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+ 
+        .lantern {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+        .lantern svg { filter: drop-shadow(0 0 8px rgba(212,175,55,0.6)); }
+        @keyframes floatUp {
+            0%   { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+            5%   { opacity: 0.8; }
+            90%  { opacity: 0.6; }
+            100% { transform: translateY(-15vh) translateX(var(--drift)) rotate(var(--rot)); opacity: 0; }
+        }
+ 
+        .sparkle {
+            position: fixed;
+            width: 3px; height: 3px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: sparkleAnim ease-in-out infinite;
+        }
+        @keyframes sparkleAnim {
+            0%,100% { opacity:0; transform: scale(0); }
+            50%      { opacity:1; transform: scale(1.5); }
+        }
+ 
+        .container {
+            background: linear-gradient(160deg, #0d2137 0%, #1a3a5c 55%, #0d2137 100%);
+            border: 1.5px solid var(--gold-dim);
+            border-radius: 24px;
+            max-width: 540px;
+            width: 100%;
+            padding: 36px 28px 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            box-shadow: 0 0 80px rgba(212,175,55,0.12), 0 0 0 1px rgba(212,175,55,0.08), 0 24px 64px rgba(0,0,0,0.6);
+            animation: cardReveal 1.2s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        @keyframes cardReveal {
+            from { opacity:0; transform: translateY(40px) scale(0.96); }
+            to   { opacity:1; transform: translateY(0) scale(1); }
+        }
+ 
+        .container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 70%);
+            animation: glowPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes glowPulse {
+            0%,100% { opacity:0.6; }
+            50%      { opacity:1; }
+        }
+ 
+        .corner {
+            position: absolute;
+            width: 50px; height: 50px;
+            opacity: 0.35;
+        }
+        .corner-tl { top:8px; left:8px; }
+        .corner-tr { top:8px; right:8px; transform: scaleX(-1); }
+        .corner-bl { bottom:8px; left:8px; transform: scaleY(-1); }
+        .corner-br { bottom:8px; right:8px; transform: scale(-1,-1); }
+ 
+        .star-row {
+            color: rgba(212,175,55,0.4);
+            font-size: 9px;
+            letter-spacing: 14px;
+            margin-bottom: 6px;
+            animation: fadeSlideDown 1s 0.3s both;
+        }
+ 
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-top: 4px;
+            animation: fadeSlideDown 1s 0.4s both;
+        }
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin: 6px 0 2px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(212,175,55,0.3);
+            animation: fadeSlideDown 1s 0.5s both;
+        }
+        .year {
+            font-size: 14px;
+            color: rgba(212,175,55,0.8);
+            letter-spacing: 6px;
+            font-family: 'Cinzel', serif;
+            animation: fadeSlideDown 1s 0.55s both;
+        }
+ 
+        @keyframes fadeSlideDown {
+            from { opacity:0; transform: translateY(-16px); }
+            to   { opacity:1; transform: translateY(0); }
+        }
+ 
+        .divider {
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 14px auto;
+        }
+        .divider-anim { animation: dividerExpand 1s 0.7s both; }
+        @keyframes dividerExpand {
+            from { width: 0; opacity:0; }
+            to   { width: 60%; opacity:1; }
+        }
+ 
+        .maaf-box {
+            margin: 10px auto 16px;
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50px;
+            display: inline-block;
+            padding: 7px 28px;
+            font-size: 15px;
+            color: #f0e0a0;
+            letter-spacing: 1px;
+            animation: fadeSlideDown 1s 0.8s both;
+        }
+ 
+        .photo-frame {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 0;
+            animation: fadeSlideDown 1s 0.9s both;
+        }
+        .photo-frame-single {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 0 2px rgba(212,175,55,0.5), 0 10px 40px rgba(0,0,0,0.5);
+            background: rgba(255,255,255,0.05);
+        }
+        .photo-display {
+            width: 100%;
+            height: auto;
+            min-height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .photo-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: #000;
+        }
+ 
+        .family-label {
+            font-size: 13px;
+            color: rgba(212,175,55,0.9);
+            letter-spacing: 2px;
+            margin-top: 22px;
+            margin-bottom: 16px;
+            animation: fadeSlideDown 1s 1s both;
+        }
+ 
+        .doa-box {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 0 0 16px;
+            color: var(--text-soft);
+            font-size: 14.5px;
+            line-height: 1.85;
+            animation: fadeSlideDown 1s 1.1s both;
+        }
+        .arabic {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 21px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            direction: rtl;
+        }
+        .arabic2 {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 16px;
+            color: rgba(212,175,55,0.75);
+            margin-top: 10px;
+            direction: rtl;
+        }
+        .aamiin {
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 14px;
+        }
+ 
+        .closing {
+            font-size: 13px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+            animation: fadeSlideDown 1s 1.2s both;
+        }
+ 
+        .credit {
+            font-size: 11px;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 1px;
+            animation: fadeSlideDown 1s 1.4s both;
+        }
+ 
+        /* MOON */
+        .moon-wrap {
+            position: absolute;
+            top: -18px; right: 24px;
+            animation: moonFloat 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes moonFloat {
+            0%,100% { transform: translateY(0) rotate(-5deg); }
+            50%      { transform: translateY(-8px) rotate(5deg); }
+        }
+ 
+        #toast {
+            position: fixed;
+            bottom: 30px; left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--gold);
+            color: #1a1a2e;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 999;
+        }
+        #toast.show { opacity:1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+ 
+<canvas class="stars-canvas" id="starsCanvas"></canvas>
+ 
+<div class="container" id="cardContainer">
+ 
+    <svg class="corner corner-tl" viewBox="0 0 50 50" fill="none">
+        <path d="M2 48 Q2 2 48 2" stroke="#d4af37" stroke-width="1.5" fill="none"/>
+        <path d="M2 38 Q2 12 28 2" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="48" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="2" cy="48" r="2" fill="#d4af37"/>
+    </svg>
+    <svg class="corner corner-tr" viewBox="0 0 50 50" fill="none">
+        <path d="M2 48 Q2 2 48 2" stroke="#d4af37" stroke-width="1.5" fill="none"/>
+        <path d="M2 38 Q2 12 28 2" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="48" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="2" cy="48" r="2" fill="#d4af37"/>
+    </svg>
+    <svg class="corner corner-bl" viewBox="0 0 50 50" fill="none">
+        <path d="M2 48 Q2 2 48 2" stroke="#d4af37" stroke-width="1.5" fill="none"/>
+        <path d="M2 38 Q2 12 28 2" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="48" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="2" cy="48" r="2" fill="#d4af37"/>
+    </svg>
+    <svg class="corner corner-br" viewBox="0 0 50 50" fill="none">
+        <path d="M2 48 Q2 2 48 2" stroke="#d4af37" stroke-width="1.5" fill="none"/>
+        <path d="M2 38 Q2 12 28 2" stroke="#d4af37" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="48" cy="2" r="2" fill="#d4af37"/>
+        <circle cx="2" cy="48" r="2" fill="#d4af37"/>
+    </svg>
+ 
+    <!-- Bulan -->
+    <div class="moon-wrap">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M24 4C13 4 4 13 4 24s9 20 20 20c4.2 0 8.1-1.3 11.3-3.5-1.1.1-2.2.2-3.3.2-9.4 0-17-7.6-17-17 0-7.2 4.5-13.4 10.9-15.9C25.3 4.3 24.7 4 24 4z" fill="rgba(212,175,55,0.7)"/>
+        </svg>
+    </div>
+ 
+    <div class="star-row">✦ ✦ ✦ ✦ ✦</div>
+    <p class="title">✦ SELAMAT HARI RAYA ✦</p>
+    <h1 class="subtitle">IDUL FITRI</h1>
+    <p class="year">1 4 4 7 &nbsp; H</p>
+ 
+    <div class="divider divider-anim"></div>
+ 
+    <div class="maaf-box">Mohon Maaf Lahir dan Batin</div>
+ 
+    <div class="photo-frame">
+        <div class="photo-frame-single">
+            <div class="photo-display" id="photoDisplay">
+                <img src="foto_aldin.jpg" alt="Foto Papa &amp; Mama" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+ 
+    <div class="family-label">Abrita Sigit &amp; Keluarga, S.E</div>
+ 
+    <div class="divider"></div>
+ 
+    <div class="doa-box">
+        <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <p>Ya Allah SWT, limpahkanlah rahmat-Mu yang wasi' kepada keluarga kami semua. Jadikanlah Idul Fitri ini momentum taubat, peningkatan iman dan kebersamaan.</p>
+        <div class="arabic2">طَهَرْتُمْ وَتَطَهَّرَ اللَّهُ مِنْكُمْ</div>
+        <div class="aamiin">🤲 Aamiin Yaa Rabbal 'Aalamiin 🤲</div>
+    </div>
+ 
+    <div class="closing">🌙 MOHON MAAF LAHIR &amp; BATIN 🌙</div>
+ 
+    <div class="credit">Idul Fitri 1447 H</div>
+</div>
+ 
+<div id="toast"></div>
+ 
+<script>
+// ── 1. STARS ──────────────────────────────────────────────────
+(function() {
+    const canvas = document.getElementById('starsCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    for (let i = 0; i < 180; i++) {
+        stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.4 + 0.3, phase: Math.random() * Math.PI * 2, speed: 0.3 + Math.random() * 0.8 });
+    }
+    function draw(t) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => {
+            const alpha = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(t * s.speed * 0.001 + s.phase));
+            ctx.beginPath();
+            ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(212,175,55,${alpha})`;
+            ctx.fill();
+        });
+        requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+})();
+ 
+// ── 2. LANTERNS ───────────────────────────────────────────────
+(function() {
+    const makeLantern = (color) => `<svg width="26" height="38" viewBox="0 0 26 38" fill="none">
+        <ellipse cx="13" cy="19" rx="8" ry="13" fill="${color}" opacity="0.82"/>
+        <rect x="11" y="0" width="4" height="5" rx="2" fill="#d4af37" opacity="0.7"/>
+        <rect x="11.5" y="32" width="3" height="6" rx="1.5" fill="#d4af37" opacity="0.5"/>
+        <ellipse cx="13" cy="19" rx="5" ry="9" fill="white" opacity="0.12"/>
+    </svg>`;
+    const colors = ['#d4af37','#e8b86d','#f0c060','#c49520'];
+    let count = 0;
+    function spawn() {
+        if (count > 12) return;
+        count++;
+        const el = document.createElement('div');
+        el.className = 'lantern';
+        el.innerHTML = makeLantern(colors[Math.floor(Math.random() * colors.length)]);
+        const x    = 5 + Math.random() * 90;
+        const drift = (Math.random() - 0.5) * 100 + 'px';
+        const rot   = (Math.random() - 0.5) * 25 + 'deg';
+        const dur   = 13 + Math.random() * 10;
+        el.style.cssText = `left:${x}vw; --drift:${drift}; --rot:${rot}; animation-duration:${dur}s; animation-delay:${Math.random()*4}s`;
+        document.body.appendChild(el);
+        setTimeout(() => { el.remove(); count--; spawn(); }, (dur + 5) * 1000);
+    }
+    for (let i = 0; i < 6; i++) setTimeout(spawn, i * 1600);
+})();
+ 
+// ── 3. SPARKLES ───────────────────────────────────────────────
+(function() {
+    for (let i = 0; i < 30; i++) {
+        const el = document.createElement('div');
+        el.className = 'sparkle';
+        el.style.cssText = `left:${Math.random()*100}vw; top:${Math.random()*100}vh; animation-duration:${2+Math.random()*3}s; animation-delay:${Math.random()*4}s`;
+        document.body.appendChild(el);
+    }
+})();
+ 
+// ── 4. MUSIK — Tap mana saja sekali → langsung play, tidak bisa stop ──
+let audioCtx = null, musicStarted = false, activeOscs = [];
+ 
+function buildMelody(ctx) {
+    activeOscs = [];
+ 
+    const master = ctx.createGain();
+    master.gain.value = 0.28;
+    master.connect(ctx.destination);
+ 
+    // Reverb — dua delay bertumpuk biar terasa seperti di masjid
+    const delay1 = ctx.createDelay(1.0); delay1.delayTime.value = 0.38;
+    const fb1 = ctx.createGain(); fb1.gain.value = 0.30;
+    delay1.connect(fb1); fb1.connect(delay1);
+    const delay2 = ctx.createDelay(1.0); delay2.delayTime.value = 0.52;
+    const fb2 = ctx.createGain(); fb2.gain.value = 0.16;
+    delay2.connect(fb2); fb2.connect(delay2);
+    const wet = ctx.createGain(); wet.gain.value = 0.35;
+    master.connect(delay1); master.connect(delay2);
+    delay1.connect(wet); delay2.connect(wet);
+    wet.connect(ctx.destination);
+ 
+    // Maqam Hijaz — nada khas Islam/Ramadhan
+    const D4=293.66, Eb4=311.13, Fs4=370.00, G4=392.00,
+          A4=440.00, Bb4=466.16, Cs5=554.37, D5=587.33,
+          D3=146.83, A3=220.00, G3=196.00, Bb3=233.08;
+ 
+    const B = 0.54;
+ 
+    const seq = [
+        [D4,  0.0*B,1.2*B], [Eb4,1.3*B,0.5*B], [Fs4,1.9*B,0.9*B],
+        [G4,  2.9*B,1.0*B], [A4, 4.0*B,1.4*B], [G4, 5.5*B,0.6*B],
+        [Fs4, 6.2*B,0.5*B], [Eb4,6.8*B,0.5*B], [D4, 7.4*B,1.8*B],
+        [D4,  9.4*B,0.5*B], [Fs4,9.9*B,0.5*B], [A4,10.5*B,0.6*B],
+        [Bb4,11.2*B,0.9*B], [A4,12.2*B,0.5*B], [G4,12.8*B,0.5*B],
+        [Fs4,13.4*B,0.5*B], [Eb4,14.0*B,0.5*B],[D4,14.6*B,2.0*B],
+        [A4, 16.8*B,0.7*B], [Bb4,17.6*B,0.6*B],[Cs5,18.3*B,0.8*B],
+        [D5, 19.2*B,1.5*B], [Cs5,20.8*B,0.5*B],[Bb4,21.4*B,0.5*B],
+        [A4, 22.0*B,0.5*B], [G4, 22.6*B,0.5*B],[Fs4,23.2*B,0.6*B],
+        [Eb4,23.9*B,0.5*B], [D4, 24.5*B,2.2*B],
+        [G4, 26.9*B,0.6*B], [Fs4,27.6*B,0.5*B],[Eb4,28.2*B,0.5*B],
+        [D4, 28.8*B,0.6*B], [Eb4,29.5*B,0.4*B],[Fs4,30.0*B,0.5*B],
+        [G4, 30.6*B,0.8*B], [A4, 31.5*B,1.2*B],[G4, 32.8*B,0.5*B],
+        [Fs4,33.4*B,0.5*B], [Eb4,34.0*B,0.5*B],[D4, 34.6*B,2.6*B],
+    ];
+ 
+    const drone = [
+        [D3, 0,    37*B, 0.15],
+        [A3, 0,    37*B, 0.08],
+        [G3, 9*B,   9*B, 0.07],
+        [Bb3,16*B,  8*B, 0.07],
+    ];
+ 
+    const loopLen = 38 * B;
+ 
+    function note(freq, start, dur, vol, type='sine') {
+        const osc = ctx.createOscillator();
+        const g   = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        const atk = Math.min(0.07, dur * 0.1);
+        const rel = Math.min(0.14, dur * 0.25);
+        g.gain.setValueAtTime(0, start);
+        g.gain.linearRampToValueAtTime(vol, start + atk);
+        g.gain.setValueAtTime(vol, start + dur - rel);
+        g.gain.linearRampToValueAtTime(0, start + dur);
+        osc.connect(g); g.connect(master);
+        osc.start(start); osc.stop(start + dur + 0.05);
+        activeOscs.push(osc);
+ 
+        const o2 = ctx.createOscillator();
+        const g2 = ctx.createGain();
+        o2.type = 'triangle'; o2.frequency.value = freq * 2;
+        g2.gain.setValueAtTime(0, start);
+        g2.gain.linearRampToValueAtTime(vol * 0.15, start + atk);
+        g2.gain.linearRampToValueAtTime(0, start + dur * 0.5);
+        o2.connect(g2); g2.connect(master);
+        o2.start(start); o2.stop(start + dur * 0.55);
+        activeOscs.push(o2);
+    }
+ 
+    function loop(offset) {
+        const t0 = ctx.currentTime + offset;
+        seq.forEach(([f,t,d])      => note(f, t0+t, d, 0.50));
+        drone.forEach(([f,t,d,v]) => note(f, t0+t, d, v, 'triangle'));
+    }
+ 
+    for (let i = 0; i < 10; i++) loop(i * loopLen);
+}
+ 
+function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    buildMelody(audioCtx);
+}
+ 
+// Tap / klik / sentuh di mana saja → musik mulai (sekali saja)
+['touchstart', 'click', 'keydown'].forEach(function(ev) {
+    document.addEventListener(ev, startMusic, { once: true });
+});
+</script>
+</body>
+</html>
+ 
